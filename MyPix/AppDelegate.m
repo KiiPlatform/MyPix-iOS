@@ -29,7 +29,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    [Kii beginWithID:@"80578bc6" andKey:@"a39c0aeefcf4b8030bc177df7cf27bfe"];
+    [Kii beginWithID:@"___APPID___" andKey:@"___APPKEY___"];
     
     NSError *error;
 //    [KiiUser authenticateSynchronous:@"test0123" withPassword:@"password" andError:&error];
