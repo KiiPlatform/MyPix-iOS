@@ -31,15 +31,6 @@
 
     [Kii beginWithID:@"___APPID___" andKey:@"___APPKEY___"];
     
-    NSError *error;
-//    [KiiUser authenticateSynchronous:@"test0123" withPassword:@"password" andError:&error];
-    
-    NSString *rand = [NSString randomString:10 withCharacterSet:KTCharacterSetAlpha];
-    KiiUser *u = [KiiUser userWithUsername:rand andPassword:@"password"];
-    [u performRegistrationSynchronous:&error];
-    
-    NSLog(@"Error: %@", error);
-    
     ViewController *vc = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
 
     _navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
