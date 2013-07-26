@@ -5,7 +5,7 @@ MyPix is a bare-bones sample application that shows you how to create a user acc
 
 MyPix is built on top of [Kii Cloud](http://developer.kii.com) so you don't need to do any backend setup or coding, you can just plug in the easy-to-use Kii SDK and you're up and running!
 
-### Leveraging KiiToolkit
+#### KiiToolkit
 MyPix also utilizes the open-source [KiiToolkit](https://github.com/KiiPlatform/KiiToolkit-iOS) library for even faster development. This provides a tableview, imageview and login view that plug directly into Kii Cloud - allowing us to create this entire app in a single class with around 100 lines of code!
 
 ## Getting Started
