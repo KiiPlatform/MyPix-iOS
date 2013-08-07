@@ -37,6 +37,7 @@
 +(KiiGCMFields*) createFields;
 
 /**Set Dictionary with the data that will be sent only to Android-GCM devices.
+ This data must not contain GCM reserved payload keys, please check KiiPushMessage documentation.
 @param dict a Dictionary object contains one level json dictionary data
  */
 -(void) setSpecificData:(NSDictionary*) dict;

@@ -75,6 +75,22 @@ KiiCloud specific fields are as follows:
  BUCKET_TYPE    | bt        | X           | -                                   | -                                     | Type of bucket has been modified.                    | - rw<br> - sync
  OBJECT_ID      | oi        | X           | -                                   | -                                     | ID of the object operated.                           |
  OBJECT_MODIFIED_AT | om    | -           | -                                   | -                                     | Timestamp of the modification of object in milliseconds. (Since January 1, 1970 00:00:00 UTC)  | - DATA_OBJECT_CREATED<br> - DATA_OBJECT_UPDATED<br> - DATA_OBJECT_BODY_UPDATE
+ 
+ ### GCM restriction for reserved keyword
+ Based on Google GCM specification, there are reserved payload keys that should not be used inside data/specific data. 
+ If GCM is enabled and the data contains one or more reserve keys, an error (code 712) will be returned.
+ Following are the list of GCM reserved keys:
+ 
+    - any key prefix with 'google'
+    - from
+    - registration_ids
+    - collapse_key
+    - data
+    - delay_while_idle
+    - time_to_live
+    - restricted_package_name
+    - dry_run
+  
 
  */
 @interface KiiPushMessage : NSObject
@@ -82,6 +98,7 @@ KiiCloud specific fields are as follows:
 @property(nonatomic,readonly) NSDictionary* rawMessage;
 
 /**Dictionary representation of	JSON Object with only one-level of nesting. Required if no system-specific “data” fields has been provided for all the systems enabled.	Dictionary with the data that will be sent to all the push systems enabled in this request.
+ If gcmFields is defined, the data would be validated for GCM reserved payload keys. 
  */
 @property(nonatomic,strong) NSDictionary* data;
 

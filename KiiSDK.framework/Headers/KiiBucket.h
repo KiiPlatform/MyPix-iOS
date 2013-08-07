@@ -48,8 +48,8 @@ typedef void (^KiiQueryResultBlock)(KiiQuery *query, KiiBucket *bucket, NSArray 
     KiiQuery *query = ...;
 
     // To recursively get all results in a query (from multiple pages)
-    __block NSUInteger count = 0;
-    __block __weak KiiQueryResultBlock queryBlock = ^(KiiQuery *retQuery, KiiBucket *retBucket, NSArray *retResults, KiiQuery *retNextQuery, NSError *retError) {
+    KiiQueryResultBlock __block __weak weakQueryBlock;
+    KiiQueryResultBlock queryBlock = ^(KiiQuery *retQuery, KiiBucket *retBucket, NSArray *retResults, KiiQuery *retNextQuery, NSError *retError) {
         // We got some valid results
         if (retError == nil) {
             // Do something with the results
@@ -59,10 +59,10 @@ typedef void (^KiiQueryResultBlock)(KiiQuery *query, KiiBucket *bucket, NSArray 
         // We have another query available (another page of results)
         if (retNextQuery != nil) {
             // Execute the next query
-            KiiQueryResultBlock nextBlock = queryBlock;
-            [bucket executeQuery:retNextQuery withBlock:[nextBlock copy]];
+            [bucket executeQuery:retNextQuery withBlock:[weakQueryBlock copy]];
         }
     };
+    weakQueryBlock = queryBlock;
 
     [bucket executeQuery:query withBlock:queryBlock];
  

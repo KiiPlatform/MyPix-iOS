@@ -55,6 +55,9 @@ typedef enum { GET, PUT, POST, FORMPOST, DELETE , HEAD } HttpMethods;
 @property (nonatomic, assign) BOOL isChunkUpload;
 @property (nonatomic, assign) BOOL isChunkDownload;
 @property (nonatomic, assign) BOOL isObjectBodyMetadata;
+@property (nonatomic, assign) long long uploadFileSize;
+
+
 
 - (id) initWithPath:(NSString*)path andApp:(BOOL)appInPath;
 - (id) initWithPath:(NSString*)path;
@@ -64,5 +67,7 @@ typedef enum { GET, PUT, POST, FORMPOST, DELETE , HEAD } HttpMethods;
 - (NSDictionary*) makeSynchronousRequest:(NSError**)sendError andResponse:(int*)response withETag:(NSString**) etag discardBody:(BOOL)discardBody;
 - (NSDictionary*) makeSynchronousRequest:(NSError**)sendError andResponse:(int*)response discardBody:(BOOL)discardBody;
 - (NSDictionary*) makeSynchronousRequest:(NSError**)sendError;
+-(void) responseDataReceived:(NSMutableData *)data withExpectedSize:(long long) size;
+-(void) requestDataSend:(NSInteger) totalBytesWritten;
 
 @end

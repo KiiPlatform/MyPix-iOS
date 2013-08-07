@@ -60,6 +60,7 @@
  - *512* - The object you are saving is older than what is on the server. Use one of the KiiObject#save:forced: methods to forcibly override data on the server
  - *513* - The group name provided is not valid. Ensure it is alphanumeric and more than 0 characters in length
  - *514* - At least one of the ACL entries saved to an object failed. Please note there may also have been one or more successful entries
+ - *515* - Bucket parent(user/group) of the bucket does not exist in the cloud.
 
  <h3>Query Errors (6xx)</h3>
  - *601* - No more query results exist
@@ -79,6 +80,7 @@
  - *709* - Device token is not set
  - *710* - Push installation does not exist
  - *711* - Topic ID is invalid. Topic ID must be alphanumeric character and between 1-64 length
+ - *712* - GCM payload key contains google reserved words
 
  <h3>Resumable Transfer Errors (8xx)</h3>
  - *801* - Resumable transfer object has already transferred completely
@@ -236,6 +238,8 @@
 /* At least one of the ACL entries saved to an object failed. Please note there may also have been one or more successful entries. */
 + (NSError*) partialACLFailure;
 
+/* Bucket parent of the bucket(user/group) does not exist in the cloud. */
++ (NSError *)bucketParentNotExistInCloud;
 
 
 /* Query Errors (6xx) */
@@ -284,6 +288,9 @@
 
 /* Topic ID is invalid. Topic ID must be alphanumeric character and between 1-64 length.*/
 + (NSError*) invalidTopicID;
+
+/* GCM payload key contains google reserved words.*/
++ (NSError*) containsGCMReservedKey;
 
 /* Resumable Transfer Errors (8xx) */
 

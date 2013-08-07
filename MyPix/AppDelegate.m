@@ -29,7 +29,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    [Kii beginWithID:@"___APPID___" andKey:@"___APPKEY___"];
+    [Kii beginWithID:@"___APPID___"
+              andKey:@"___APPKEY___"];
     
     ViewController *vc = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
 

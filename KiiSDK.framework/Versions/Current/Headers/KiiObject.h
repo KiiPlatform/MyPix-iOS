@@ -56,6 +56,13 @@ typedef void (^KiiObjectBlock)(KiiObject *object, NSError *error);
 /** Sets a key/value pair to a KiiObject
  
  If the key already exists, its value will be written over. If the object is of invalid type, it will return false and an NSError will be thrown (quietly). Accepted types are any JSON-encodable objects.
+ ***NOTE: Before involving floating point value, please consider using integer instead. For example, use percentage, permil, ppm, etc.***
+ The reason is:
+ - Will dramatically improve the performance of bucket query.
+ - Bucket query does not support the mixed result of integer and floating point.
+ ex.) If you use same key for integer and floating point and inquire object with the
+ integer value, objects which has folating point value with the key would not be evaluated
+ in the query. (and vice versa)
  @param object The value to be set. Object must be of a JSON-encodable type (Ex: NSDictionary, NSArray, NSString, NSNumber, etc)
  @param key The key to set. The key must not be a system key (created, metadata, modified, type, uuid) or begin with an underscore (_)
  @return True if the object was set, false otherwise.
