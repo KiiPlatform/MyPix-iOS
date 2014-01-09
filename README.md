@@ -19,3 +19,7 @@ If you want to get up and running quickly, simply:
 ## Next Steps
 
 This is a great way to get your new photo app up and running even faster with [Kii Cloud](http://developer.kii.com), so have fun building, feel free to contribute and let us know what you think!
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/KiiPlatform/mypix-ios/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
